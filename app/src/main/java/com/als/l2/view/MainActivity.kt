@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.als.l2.R
 import com.als.l2.databinding.MainActivityBinding
+import com.als.l2.view.main.MainFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -18,6 +19,5 @@ class MainActivity : AppCompatActivity() {
                 .replace(R.id.container, MainFragment.newInstance())
                 .commit()
         }
-        // gknhlkjghdfkjlh
     }
 }

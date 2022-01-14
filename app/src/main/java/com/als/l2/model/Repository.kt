@@ -1,9 +1,19 @@
 package com.als.l2.model
 
-class Repository: IRepository {
-    override fun getWeatherFromServer(): City = City(name = "Moskow", temp = -20)
+import android.view.View
 
-    fun doSomthing(){
+class Repository() : IRepository {
 
+    override fun getWeatherFromServer(): Weather {
+        return Weather()
     }
+
+    override fun getWeatherFromLocalStorageRus(): List<Weather> {
+        return getRussianCities()
+    }
+
+    override fun getWeatherFromLocalStorageWorld(): List<Weather> {
+        return getWorldCities()
+    }
+
 }
