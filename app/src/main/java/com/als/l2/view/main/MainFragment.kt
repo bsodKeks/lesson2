@@ -1,9 +1,12 @@
 package com.als.l2.view.main
 
+import android.Manifest
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.app.ActivityCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -15,6 +18,13 @@ import com.als.l2.view.details.DetailsFragment
 import com.als.l2.viewmodel.AppState
 import com.als.l2.viewmodel.MainViewModel
 import com.google.android.material.snackbar.Snackbar
+import java.io.BufferedOutputStream
+import java.io.BufferedReader
+import java.io.InputStreamReader
+import java.io.OutputStream
+import java.net.HttpURLConnection
+import java.net.URL
+import javax.net.ssl.HttpsURLConnection
 
 class MainFragment : Fragment() {
 
