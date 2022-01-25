@@ -1,6 +1,7 @@
 package com.als.l2.view.main
 
 import android.Manifest
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -14,7 +15,9 @@ import androidx.lifecycle.ViewModelProvider
 import com.als.l2.R
 import com.als.l2.databinding.FragmentMainBinding
 import com.als.l2.model.Weather
+import com.als.l2.view.MainActivity
 import com.als.l2.view.details.DetailsFragment
+import com.als.l2.view.tread.ForegroundService
 import com.als.l2.viewmodel.AppState
 import com.als.l2.viewmodel.MainViewModel
 import com.google.android.material.snackbar.Snackbar
@@ -58,10 +61,17 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.mainFragmentRecyclerView.adapter = adapter
-        binding.mainFragmentFAB.setOnClickListener { changeWeatherDataSet() }
-        viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+        binding.mainFragmentFAB.setOnClickListener {
+            //changeWeatherDataSet()
+            startTest()
+        }
+        viewModel = ViewModelProvider(this)[MainViewModel::class.java]
         viewModel.getLiveData().observe(viewLifecycleOwner, Observer { renderData(it) })
         viewModel.getWeatherFromLocalSourceRus()
+    }
+
+    private fun startTest(){
+        activity?.startService(Intent(activity as? MainActivity, ForegroundService::class.java))
     }
 
     private fun changeWeatherDataSet() {

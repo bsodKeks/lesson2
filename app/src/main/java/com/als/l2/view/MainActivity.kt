@@ -7,9 +7,11 @@ import android.util.Log
 import android.view.View
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import com.als.l2.R
 import com.als.l2.databinding.MainActivityBinding
 import com.als.l2.view.main.MainFragment
+import com.als.l2.view.tread.ThreadsFragment
 import java.io.BufferedReader
 import java.io.InputStreamReader
 import java.net.MalformedURLException
@@ -27,10 +29,19 @@ class MainActivity : AppCompatActivity() {
 //        binding.ok.setOnClickListener(clickListener)
         setContentView(binding.root)
         if (savedInstanceState == null) {
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.container, MainFragment.newInstance())
-                .commit()
+            showMainFragment()
+//            showFragment(ThreadsFragment.newInstance())
         }
+    }
+
+    private fun showFragment(fragment: Fragment){
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.container, fragment)
+            .commit()
+    }
+
+    private fun showMainFragment(){
+        showFragment(MainFragment.newInstance())
     }
 
 //    var clickListener: View.OnClickListener = object : View.OnClickListener {
