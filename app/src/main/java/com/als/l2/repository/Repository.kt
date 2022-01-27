@@ -1,6 +1,8 @@
-package com.als.l2.model
+package com.als.l2.repository
 
-import android.view.View
+import com.als.l2.model.Weather
+import com.als.l2.model.getRussianCities
+import com.als.l2.model.getWorldCities
 
 class Repository() : IRepository {
 

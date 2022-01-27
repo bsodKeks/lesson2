@@ -1,4 +1,4 @@
-package com.als.l2.view.main
+package com.als.l2.presentation.main
 
 import android.view.LayoutInflater
 import android.view.View

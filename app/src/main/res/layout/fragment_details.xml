@@ -15,12 +15,12 @@
             android:id="@+id/cityName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/city_name_margin_top"
+            android:layout_marginTop="8dp"
             android:textSize="@dimen/city_name_text_size"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ivPicture"
             tools:text="Москва" />
 
         <TextView
@@ -45,6 +45,17 @@
             app:layout_constraintTop_toBottomOf="@+id/cityCoordinates"
             tools:text="Облачно" />
 
+
+        <ImageView
+            android:id="@+id/ivCondition"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/weatherCondition"
+            tools:srcCompat="@tools:sample/avatars" />
+
+
         <TextView
             android:id="@+id/temperatureLabel"
             android:layout_width="wrap_content"
@@ -53,7 +64,7 @@
             android:text="@string/temperature_label"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/weatherCondition" />
+            app:layout_constraintTop_toBottomOf="@+id/ivCondition" />
 
         <TextView
             android:id="@+id/temperatureValue"
@@ -88,6 +99,16 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/feelsLikeLabel"
             tools:text="-23" />
+
+        <ImageView
+            android:id="@+id/ivPicture"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@tools:sample/avatars" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <FrameLayout
@@ -96,7 +117,7 @@
         android:layout_height="match_parent"
         android:background="@color/loadingBackground"
         android:visibility="gone"
-        tools:visibility="visible">
+        tools:visibility="gone">
 
         <ProgressBar
             style="?android:attr/progressBarStyleLarge"

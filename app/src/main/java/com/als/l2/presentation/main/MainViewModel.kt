@@ -1,10 +1,11 @@
-package com.als.l2.viewmodel
+package com.als.l2.presentation.main
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.als.l2.model.IRepository
-import com.als.l2.model.Repository
+import com.als.l2.model.AppState
+import com.als.l2.repository.IRepository
+import com.als.l2.repository.Repository
 import java.lang.Thread.sleep
 
 class MainViewModel(private val liveDataToObserve : MutableLiveData<AppState> = MutableLiveData()) : ViewModel() {

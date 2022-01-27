@@ -1,4 +1,6 @@
-package com.als.l2.model
+package com.als.l2.repository
+
+import com.als.l2.model.Weather
 
 interface IRepository {
     fun getWeatherFromServer(): Weather

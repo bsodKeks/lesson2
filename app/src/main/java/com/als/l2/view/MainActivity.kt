@@ -1,23 +1,11 @@
 package com.als.l2.view
 
-import android.os.Build
 import android.os.Bundle
-import android.os.Handler
-import android.util.Log
-import android.view.View
-import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.als.l2.R
 import com.als.l2.databinding.MainActivityBinding
-import com.als.l2.view.main.MainFragment
-import com.als.l2.view.tread.ThreadsFragment
-import java.io.BufferedReader
-import java.io.InputStreamReader
-import java.net.MalformedURLException
-import java.net.URL
-import java.util.stream.Collectors
-import javax.net.ssl.HttpsURLConnection
+import com.als.l2.presentation.main.MainFragment
 
 class MainActivity : AppCompatActivity() {
 
