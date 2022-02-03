@@ -14,6 +14,7 @@ import com.als.l2.databinding.FragmentDetailsBinding
 import com.als.l2.model.Weather
 import com.als.l2.utils.showSnackBar
 import com.als.l2.model.AppState
+import com.als.l2.model.City
 import com.bumptech.glide.Glide
 import com.google.android.material.snackbar.Snackbar
 
@@ -50,8 +51,23 @@ class DetailsFragment : Fragment() {
         _binding = null
     }
 
+    private fun saveHistory(
+        city: City,
+        weather: Weather
+    ) {
+        viewModel.saveHistory(
+            Weather(
+                city,
+                weather.temperature,
+                weather.feelsLike,
+                weather.condition
+            )
+        )
+    }
+
 
     private fun setWeather(weather: Weather) {
+        saveHistory(weatherBundle.city, weather)
         val city = weatherBundle.city
         binding.cityName.text = city.city
         binding.cityCoordinates.text = "${getString(R.string.city_coordinates)} ${city.lat} ${city.lon}"

@@ -7,32 +7,13 @@
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
     <application
+        android:name=".presentation.App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.L2">
-        <service
-            android:name=".view.tread.ForegroundService"
-            android:enabled="true"
-            android:exported="true"></service>
-        <service
-            android:name=".view.details.DetailService"
-            android:enabled="true"
-            android:exported="true" />
-        <service
-            android:name=".view.tread.MainService"
-            android:enabled="true"
-            android:exported="true" />
-
-        <receiver
-            android:name=".view.tread.MainBroadcastReceiver"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.LOCALE_CHANGED" />
-            </intent-filter>
-        </receiver>
 
         <activity
             android:name=".view.MainActivity"

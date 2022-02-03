@@ -1,10 +1,13 @@
 package com.als.l2.view
 
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.als.l2.R
 import com.als.l2.databinding.MainActivityBinding
+import com.als.l2.presentation.history.HistoryFragment
 import com.als.l2.presentation.main.MainFragment
 
 class MainActivity : AppCompatActivity() {
@@ -22,9 +25,33 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_main, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.menu_history -> {
+                showFragmentWithBackStack(HistoryFragment.newInstance())
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+
+
     private fun showFragment(fragment: Fragment){
         supportFragmentManager.beginTransaction()
             .replace(R.id.container, fragment)
+            .commit()
+    }
+
+    private fun showFragmentWithBackStack(fragment: Fragment){
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.container, fragment)
+            .addToBackStack(null)
             .commit()
     }
 

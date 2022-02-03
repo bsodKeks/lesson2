@@ -4,9 +4,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.als.l2.model.*
-import com.als.l2.repository.DetailsRepository
-import com.als.l2.repository.IDetailsRepository
-import com.als.l2.repository.RemoteDataSource
+import com.als.l2.presentation.App
+import com.als.l2.repository.*
+import com.als.l2.utils.convertDtoToModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -21,6 +21,11 @@ class DetailsViewModel(
 ) : ViewModel() {
 
     val detailsLiveData: LiveData<AppState> get() = mutableDetailsLiveData
+    private val historyRepository: ILocalRepository = LocalRepository(App.getHistoryDao())
+
+    fun saveHistory(weather: Weather){
+        historyRepository.saveEntity(weather)
+    }
 
     private val callBack = object :
         Callback<WeatherDTO> {
@@ -54,12 +59,6 @@ class DetailsViewModel(
     fun getWeatherFromRemoteSource(lat: Double, lon: Double) {
         mutableDetailsLiveData.value = AppState.Loading
         detailsRepository.getWeatherDetailsFromServer(lat, lon, callBack)
-    }
-
-
-    private fun convertDtoToModel(weatherDTO: WeatherDTO): List<Weather> {
-        val fact: FactDTO = weatherDTO.factical!!
-        return listOf(Weather(getDefaultCity(), fact.temp!!, fact.feels_like!!, fact.condition!!, fact.icon!!))
     }
 }
 
