@@ -1,5 +1,6 @@
 package com.als.l2.view
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -7,6 +8,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.als.l2.R
 import com.als.l2.databinding.MainActivityBinding
+import com.als.l2.experiment.ContactFragment
+import com.als.l2.experiment.TestForeground
 import com.als.l2.presentation.history.HistoryFragment
 import com.als.l2.presentation.main.MainFragment
 
@@ -34,28 +37,31 @@ class MainActivity : AppCompatActivity() {
         return when (item.itemId) {
             R.id.menu_history -> {
                 showFragmentWithBackStack(HistoryFragment.newInstance())
+                //startService(Intent(this, TestForeground::class.java))
+                true
+            }
+            R.id.menu_contacts -> {
+                showFragmentWithBackStack(ContactFragment.newInstance())
                 true
             }
             else -> super.onOptionsItemSelected(item)
         }
     }
 
-
-
-    private fun showFragment(fragment: Fragment){
+    private fun showFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction()
             .replace(R.id.container, fragment)
             .commit()
     }
 
-    private fun showFragmentWithBackStack(fragment: Fragment){
+    private fun showFragmentWithBackStack(fragment: Fragment) {
         supportFragmentManager.beginTransaction()
             .replace(R.id.container, fragment)
             .addToBackStack(null)
             .commit()
     }
 
-    private fun showMainFragment(){
+    private fun showMainFragment() {
         showFragment(MainFragment.newInstance())
     }
 
@@ -99,5 +105,4 @@ class MainActivity : AppCompatActivity() {
 //            return reader.lines().collect(Collectors.joining("\n"))
 //        }
 //    }
-
 }

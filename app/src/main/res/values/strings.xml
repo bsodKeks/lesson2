@@ -20,4 +20,6 @@
     <string name="service">Service</string>
     <string name="service_broadcast">Service + Broadcast</string>
     <string name="menu_title_history">История</string>
+    <string name="menu_title_contacts">Контакты</string>
+    <string name="authorities">com.als.l2</string>
 </resources>
