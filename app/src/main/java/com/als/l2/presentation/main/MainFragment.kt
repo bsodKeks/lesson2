@@ -26,6 +26,7 @@ import com.als.l2.model.AppState
 import com.als.l2.model.City
 import com.als.l2.presentation.details.DetailsFragment
 import com.als.l2.utils.Constants
+import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.material.snackbar.Snackbar
 import java.io.IOException
 
@@ -324,6 +325,7 @@ class MainFragment : Fragment() {
             }
         }
     }
+
 
     override fun onDestroy() {
         adapter.removeListener()

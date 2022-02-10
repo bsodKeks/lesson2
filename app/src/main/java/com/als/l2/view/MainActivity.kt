@@ -1,6 +1,7 @@
 package com.als.l2.view
 
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
@@ -11,6 +12,8 @@ import com.als.l2.experiment.ContactFragment
 import com.als.l2.presentation.history.HistoryFragment
 import com.als.l2.presentation.main.MainFragment
 import com.als.l2.presentation.maps.MapsFragment
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.installations.FirebaseInstallations
 
 class MainActivity : AppCompatActivity() {
 
@@ -25,6 +28,7 @@ class MainActivity : AppCompatActivity() {
             showMainFragment()
 //            showFragment(ThreadsFragment.newInstance())
         }
+        getToken()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -68,6 +72,17 @@ class MainActivity : AppCompatActivity() {
         showFragment(MainFragment.newInstance())
     }
 
+    private fun getToken(){
+        FirebaseInstallations.getInstance().id.addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                Log.d("Installations", "Installation ID: " + task.result)
+            } else {
+                Log.e("Installations", "Unable to get Installation ID")
+            }
+        }
+    }
+//eVj-ESDHQiORLpqIXNAttM
+//eVj-ESDHQiORLpqIXNAttM
 //    var clickListener: View.OnClickListener = object : View.OnClickListener {
 //
 //        @RequiresApi(Build.VERSION_CODES.N)
