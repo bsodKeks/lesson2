@@ -23,14 +23,14 @@ class GeoZones : Service() {
 
         val geofence: Geofence = Geofence.Builder()
             .setRequestId("fgd")
-            .setCircularRegion(55.755826, 37.617299900000035, 100)
+            .setCircularRegion(55.755826, 37.617299900000035, 100f)
             .build()
 
         val geofencingRequest = GeofencingRequest.Builder()
             .setInitialTrigger(GeofencingRequest.INITIAL_TRIGGER_ENTER)
             .addGeofences(listOf(geofence)).build()
 
-        geofencingClient.addGeofences(geofencingRequest, intent)
+        //geofencingClient.addGeofences(geofencingRequest, intent)
 
 
 
