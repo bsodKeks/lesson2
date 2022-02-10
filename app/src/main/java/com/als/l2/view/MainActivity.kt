@@ -1,6 +1,5 @@
 package com.als.l2.view
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -9,9 +8,9 @@ import androidx.fragment.app.Fragment
 import com.als.l2.R
 import com.als.l2.databinding.MainActivityBinding
 import com.als.l2.experiment.ContactFragment
-import com.als.l2.experiment.TestForeground
 import com.als.l2.presentation.history.HistoryFragment
 import com.als.l2.presentation.main.MainFragment
+import com.als.l2.presentation.maps.MapsFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -42,6 +41,10 @@ class MainActivity : AppCompatActivity() {
             }
             R.id.menu_contacts -> {
                 showFragmentWithBackStack(ContactFragment.newInstance())
+                true
+            }
+            R.id.menu_maps -> {
+                showFragmentWithBackStack(MapsFragment())
                 true
             }
             else -> super.onOptionsItemSelected(item)
